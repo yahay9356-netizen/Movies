@@ -6,7 +6,11 @@ import 'services/yts_api.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    debugPrint('Firebase not configured yet: $e');
+  }
   runApp(const MoviesApp());
 }
 
